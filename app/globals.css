@@ -39,7 +39,7 @@
 
 }
 .searchdiv:hover{
-  border: 1px solid #55883B;
+  border: 3px solid #55883B;
   transform: scale(1.04);
   
 }
@@ -257,7 +257,8 @@
 
 } 
 .restaurent-card:hover{
-  transform: scale(1.05)
+  transform: scale(1.05);
+  box-shadow:  rgba(0, 0, 0, 0.2) 4.5px 9px 18px;
 }
 .restaurent-datails{
 
@@ -297,4 +298,39 @@
   background-color: #55883B;
   color: white;
   transform: scale(1.01);
+}
+
+/* Menu card and page */
+.menu{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row ;
+}
+.menucard{
+  height: 250px;
+  width: 360px;
+  margin-left: 90px;
+  box-shadow:rgba(0, 0, 0, 0.2) 4.5px 9px 18px; 
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.5s ease-in-out;
+}
+.menudetails{
+
+  margin-left: 20px;
+  margin-top: 10px;
+}
+.menucard:hover{
+  box-shadow:  rgba(0, 0, 0, 0.2) 9px 18px 32px;
+  transform: scale(1.05)
+}
+.menuimage{
+  height: 200px;
+  width: 210px;
+  margin-left: 120px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 4.5px 9px 18px; 
+  ;
 }

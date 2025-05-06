@@ -30,6 +30,9 @@ export default function Home(){
     window.location.href="./signup"
 
   }
+  function handleorder(){
+    window.location.href="./OrderNow"
+  }
   useEffect(()=>{
     async function getdata() {
       const res=await fetch("https://mocki.io/v1/7dcac9f4-fdb2-4209-bb93-9d3695a45d12")
@@ -67,7 +70,7 @@ export default function Home(){
                 <p className="detail">Rating: {restaurent.rating}</p>
                 <p className="detail">Distance: {restaurent.distance}</p>
                 <p className="detail">Phn No: 7893873124</p>
-                <button className="order">Order Now</button>
+                <button className="order" onClick={handleorder}>Order Now</button>
 
               </div>
             </div>
