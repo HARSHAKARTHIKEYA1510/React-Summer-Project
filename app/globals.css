@@ -1,0 +1,300 @@
+.nearbybites{
+  margin-left: 270px;
+  color: #55883B;
+  margin-top: 22px;
+
+}
+.navbar{
+  display: flex;
+  /* gap: 30px; */
+}
+.image_home{
+  height: 32px;
+  width: 32px; 
+  margin-top:18px; 
+}
+.searchbar{
+  outline: none;
+  border: none;
+  padding: 18px;
+  width: 400px;
+  border-radius: 20px;
+  font-size: 15px;
+  
+}
+.searchimg{
+  height: 25px;
+  padding-left: 25px;
+}
+.searchdiv{
+  margin-left: 35px;
+  margin-top: 10px;
+  width: 550px;
+  display: flex;
+  align-items: center;
+  gap :40px;
+  border: 1px solid white;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 6px;
+  transition:  0.8s ease-in-out;
+
+}
+.searchdiv:hover{
+  border: 1px solid #55883B;
+  transform: scale(1.04);
+  
+}
+.login_nav{
+  margin-left: 330px;
+  height: 36px;
+  width: 90px;
+  margin-top: 20px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 6px;
+  color: #55883B;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 0.4s ease-in;
+  font-weight: bold;
+}
+.login_nav:hover{
+  background-color: #55883B;
+  color: white;
+  transform: scale(1.01);
+}
+.signup_nav{
+  margin-left: 10px;
+  height: 36px;
+  width: 90px;
+  margin-top: 20px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 6px;
+  color: #55883B;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
+.signup_nav:hover{
+  background-color: #55883B;
+  color: white;
+  transform: scale(1.01);
+}
+
+
+
+/* Writting css code for the login page */
+.welcome{
+  margin-bottom: 40px;
+  color: #55883B;
+}
+.image{
+  height: 33px;
+  width: 33px;
+}
+.maindiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 90px;
+  flex-direction: column;
+}
+
+.logindiv{
+  height: 60vh;
+  width: 30vw;
+  background-color: white;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+
+  border: 1px solid white;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 6px;
+  border-radius: 10px;
+  color: #55883B;
+
+}
+
+.loginattributes{
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.email{
+  font-size: 18px;
+  margin-right: 265px;
+  margin-bottom: 5px;
+}
+.pass{
+  font-size: 18px;
+  margin-right: 240px;
+  margin-bottom: 5px;
+}
+.emailbox{
+  height: 41px;
+  width: 313px;
+  border-radius: 7px;
+  margin-bottom: 15px;
+  border: 1px solid black;
+}
+.passbox{
+  height: 41px;
+  width: 313px;
+  border-radius: 7px;
+  border: 1px solid black;
+
+  /* margin-bottom: 5px; */
+}
+.forgotpass{
+  margin-left: 200px;
+
+}
+.forgotpass{
+  cursor: pointer;
+}
+.remember{
+  margin-right: 180px;
+}
+.remember_signup{
+  margin-right: 190px;
+  margin-top: 30px;
+}
+.signinbutton1{
+  height: 41px;
+  width: 313px;
+  background-color: #55883B;
+  font-size: 18px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.signinbutton1:hover{
+  cursor: pointer;
+
+}
+.newbites{
+  font-size: 15px;
+  margin-right: 120px;
+  color: black;
+}
+.newbites1{
+  font-size: 15px;
+  margin-right: 120px;
+  color: black;
+}
+.signupbutton{
+  text-decoration: none;
+  color:#55883B;
+  margin-left: 5px;
+}
+
+.signinlink{
+  text-decoration: none;
+  color: white;
+
+}
+/* heres the code for entire sign up page */
+
+.signupindiv{
+  height: 58vh;
+  width: 30vw;
+  background-color: white;
+  /* border-right: 1px solid #55883B; */
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px; 
+  /* border: 1px solid #55883B; */
+  border: 1px solid white;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 6px;
+  border-radius: 20px;
+  color: #55883B;
+
+
+}
+
+.signupbutton2{
+  height: 41px;
+  width: 313px;
+  background-color: #55883B;
+  font-size: 18px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 17px;
+}
+
+.signuplink2{
+  text-decoration: none;
+  color: white;
+}
+
+/* restaurent display divs */
+.restaurent-container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+
+
+.restaurent-card{
+  height: 340px;
+  width: 250px;
+  border: 1px solid white;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 6px;
+  margin-top: 100px;
+  margin-left: 100px;
+  text-align: center;
+  transition: transform 0.3s ease-in;
+  border-radius: 10px;
+  padding-bottom: 10px;
+
+} 
+.restaurent-card:hover{
+  transform: scale(1.05)
+}
+.restaurent-datails{
+
+  text-align: left;
+  overflow: hidden;
+}
+
+.detail{
+  margin-left: 10px;
+  margin-top: 4px;
+}
+
+/* this is for image in the restuarent card */
+.image_card{
+
+  height: 72px;
+  width: 198px;
+  margin-top: px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 25px;
+
+}
+.order{
+  height: 36px;
+  width: 90px;
+  background-color: #343434	;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 0.4s ease-in;
+  font-weight: bold;
+  margin-left: 152px;
+}
+.order:hover{
+  background-color: #55883B;
+  color: white;
+  transform: scale(1.01);
+}
