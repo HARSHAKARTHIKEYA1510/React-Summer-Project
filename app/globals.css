@@ -39,8 +39,8 @@
 
 }
 .searchdiv:hover{
-  border: 3px solid #55883B;
-  transform: scale(1.04);
+  border: 1px solid #55883B;
+  transform: scale(1.02);
   
 }
 .login_nav{
@@ -226,6 +226,7 @@
   color: white;
   border: none;
   border-radius: 5px;
+  font-weight: bold;
   margin-top: 17px;
 }
 
@@ -236,29 +237,27 @@
 
 /* restaurent display divs */
 .restaurent-container{
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* consistent columns */
 }
 
 
 
 .restaurent-card{
-  height: 340px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
   border: 1px solid white;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 6px;
   margin-top: 100px;
-  margin-left: 100px;
+  margin-left: 40px;
   text-align: center;
   transition: transform 0.3s ease-in;
   border-radius: 10px;
-  padding-bottom: 10px;
-
+  padding: 10px;
 } 
 .restaurent-card:hover{
-  transform: scale(1.05);
-  box-shadow:  rgba(0, 0, 0, 0.2) 4.5px 9px 18px;
+  height: 300px;
+  width: 300px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px 4px;
 }
 .restaurent-datails{
 
@@ -268,19 +267,27 @@
 
 .detail{
   margin-left: 10px;
-  margin-top: 4px;
+  margin-top: 5px;
+  margin-bottom: 2px;
+  padding: 3px;
 }
-
+.name-rating{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  margin: 3px;
+}
 /* this is for image in the restuarent card */
 .image_card{
+  width: 100%;
+  height:160px;
+  display: block;
 
-  height: 72px;
-  width: 198px;
-  margin-top: px;
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 25px;
-
+}
+.image_card_itelia{
+  width: 100%;
+  height: 100%;
 }
 .order{
   height: 36px;
@@ -290,9 +297,10 @@
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  transition: 0.4s ease-in;
+  transition: 0.1s ease-in;
   font-weight: bold;
-  margin-left: 152px;
+  margin-top: 10px;
+  margin-left: 200px;
 }
 .order:hover{
   background-color: #55883B;
@@ -310,7 +318,7 @@
   height: 250px;
   width: 360px;
   margin-left: 90px;
-  box-shadow:rgba(0, 0, 0, 0.2) 4.5px 9px 18px; 
+  /* box-shadow:rgba(0, 0, 0, 0.2) 4.5px 9px 18px;  */
   margin-top: 40px;
   font-weight: bold;
   font-size: 18px;
@@ -319,7 +327,7 @@
 .menudetails{
 
   margin-left: 20px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 .menucard:hover{
   box-shadow:  rgba(0, 0, 0, 0.2) 9px 18px 32px;
@@ -334,3 +342,20 @@
   box-shadow: rgba(0, 0, 0, 0.2) 4.5px 9px 18px; 
   ;
 }
+#rating{
+  background-color: #0E5020;
+  display: inline-block;
+  padding: 2px 3px;
+  border-radius: 5px;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  font-weight: normal;
+  /* gap: 3px; */
+}
+.star{
+  height: 20px;
+  width: 20px;
+}
+
+
