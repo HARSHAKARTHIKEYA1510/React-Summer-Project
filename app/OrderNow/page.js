@@ -12,6 +12,8 @@ export default function(){
     // },[])
     const [cartno,setcartno]=useState(0)
     const [cartitems,setcartitems]=useState([])
+    const [showCart, setShowCart] = useState(false);
+
     const foodItems = [
         { name: "Sushi Platter", cuisine: "Japanese", price: 475 },
         { name: "Kung Pao Chicken", cuisine: "Chinese", price: 340 },
@@ -151,16 +153,20 @@ export default function(){
         const cartitem=cartitems.find((cartitem)=>cartitem.name==item.name)
         return cartitem?cartitem.quantity:0
       }
+
+      function handletogglecart() {
+        setShowCart(!showCart)
+    }
+    
     return (
         <div>
-`           <div className="cartdiv">
-            <div className="cart">
+            <div className="cart" onClick={() => setShowCart(!showCart)}>
                 <img className="cartimage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_H7uzaQjBVh27ubieyx0xNG89B3amksS7g&s" />
                 <p className="carttext">Cart</p>
                 <span className="cartno">{cartno}</span>
             </div>
-            </div>
         <div className="menuCard-container">
+            
             {foodItems.map((data,id)=>{
                 const quantity = handlequantity(data);
             return( 
@@ -195,224 +201,41 @@ export default function(){
 )})}
         </div>
         <div>
-            {cartitems.length>0&&(
-                <div className="cartitems">
-                    <div className="cartdetails">
-                    <h2>CartIems</h2>
-                    {cartitems.map((item,id)=>(
-                        <div>
-                        <p>{item.name}</p>
-                        {/* <p>{data.cuisine}</p> */}
-                        <p>₹{item.price}</p>
-                        </div>
-                    ))}
-                    </div>
-                </div>
-            )}
+        {showCart && (
+  <div className="cartitems">
+    <div className="cart-close" onClick={() => setShowCart(false)}>✖</div>
+    <div className="cartdetails">
+      <h2>Cart Items</h2>
+      {cartitems.length === 0 ? (
+        <p>Your cart is empty.</p>
+      ) : (
+        <>
+          {cartitems.map((item, id) => (
+            <div key={id} className="cart-item">
+              <p>{item.name}</p>
+              <p>₹{item.price} x {item.quantity} = ₹{item.price * item.quantity}</p>
+              <div className="addbuttons">
+                <span onClick={() => handledecrement(item)}>-</span>
+                <span>{item.quantity}</span>
+                <span onClick={() => handleincrement(item)}>+</span>
+              </div>
+            </div>
+          ))}
+          <p className="cart-total">
+            Total: ₹{cartitems.reduce((total, item) => total + item.price * item.quantity, 0)}
+          </p>
+          <p className="checkout">check Out</p>
+        </>
+      )}
+    </div>
+  </div>
+)}
+
+
+
         </div>
         </div>
     )
 }
 
 
-// "use client"
-// import { useState } from "react"
-
-// export default function() {
-//   const [cartno, setcartno] = useState(0)
-//   const [opencart, setopencart] = useState([])
-
-//   const foodItems = [
-//     { name: "Sushi Platter", cuisine: "Japanese", price: 475 },
-//     { name: "Kung Pao Chicken", cuisine: "Chinese", price: 340 },
-//     { name: "Butter Chicken", cuisine: "Indian", price: 430 },
-//     { name: "Tacos al Pastor", cuisine: "Mexican", price: 395 },
-//     { name: "Cheeseburger", cuisine: "American", price: 360 },
-//     { name: "Moussaka", cuisine: "Greek", price: 450 },
-//     { name: "Ramen Bowl", cuisine: "Japanese", price: 410 },
-//     { name: "General Tso's Chicken", cuisine: "Chinese", price: 395 },
-//     { name: "Paneer Tikka", cuisine: "Indian", price: 380 },
-//     { name: "Quesadilla", cuisine: "Mexican", price: 350 },
-//     { name: "Hot Dog", cuisine: "American", price: 315 },
-//     { name: "Souvlaki", cuisine: "Greek", price: 410 },
-//     { name: "Tempura Udon", cuisine: "Japanese", price: 460 },
-//     { name: "Sweet and Sour Pork", cuisine: "Chinese", price: 370 },
-//     { name: "Chicken Biryani", cuisine: "Indian", price: 445 },
-//     { name: "Enchiladas", cuisine: "Mexican", price: 385 },
-//     { name: "BBQ Ribs", cuisine: "American", price: 495 },
-//     { name: "Greek Salad", cuisine: "Greek", price: 320 },
-//     { name: "Teriyaki Chicken", cuisine: "Japanese", price: 425 },
-//     { name: "Manchurian", cuisine: "Chinese", price: 335 },
-//     { name: "Chole Bhature", cuisine: "Indian", price: 360 },
-//     { name: "Nachos Supreme", cuisine: "Mexican", price: 390 },
-//     { name: "Fried Chicken", cuisine: "American", price: 470 },
-//     { name: "Gyro Wrap", cuisine: "Greek", price: 440 },
-//     { name: "Sashimi Deluxe", cuisine: "Japanese", price: 480 },
-//     { name: "Dim Sum Platter", cuisine: "Chinese", price: 350 },
-//     { name: "Masala Dosa", cuisine: "Indian", price: 310 },
-//     { name: "Burrito Bowl", cuisine: "Mexican", price: 430 },
-//     { name: "Philly Cheesesteak", cuisine: "American", price: 495 },
-//     { name: "Spanakopita", cuisine: "Greek", price: 325 },
-//     { name: "Okonomiyaki", cuisine: "Japanese", price: 410 },
-//     { name: "Hakka Noodles", cuisine: "Chinese", price: 345 },
-//     { name: "Dal Makhani", cuisine: "Indian", price: 370 },
-//     { name: "Fajitas", cuisine: "Mexican", price: 400 },
-//     { name: "Mac & Cheese", cuisine: "American", price: 355 },
-//     { name: "Baklava", cuisine: "Greek", price: 320 },
-//     { name: "Katsu Curry", cuisine: "Japanese", price: 460 },
-//     { name: "Chow Mein", cuisine: "Chinese", price: 370 },
-//     { name: "Rogan Josh", cuisine: "Indian", price: 470 },
-//     { name: "Tamales", cuisine: "Mexican", price: 385 },
-//     { name: "Buffalo Wings", cuisine: "American", price: 425 },
-//     { name: "Greek Yogurt Bowl", cuisine: "Greek", price: 310 },
-//     { name: "Udon Noodle Soup", cuisine: "Japanese", price: 405 },
-//     { name: "Schezwan Fried Rice", cuisine: "Chinese", price: 365 },
-//     { name: "Aloo Paratha", cuisine: "Indian", price: 320 },
-//     { name: "Churros with Chocolate", cuisine: "Mexican", price: 350 },
-//     { name: "Corn Dog", cuisine: "American", price: 340 },
-//     { name: "Greek Lamb Chops", cuisine: "Greek", price: 490 },
-//     { name: "Miso Soup", cuisine: "Japanese", price: 330 },
-//     { name: "Spring Rolls", cuisine: "Chinese", price: 310 },
-//     { name: "Pav Bhaji", cuisine: "Indian", price: 330 },
-//     { name: "Fish Tacos", cuisine: "Mexican", price: 410 },
-//     { name: "Clam Chowder", cuisine: "American", price: 370 },
-//     { name: "Stuffed Grape Leaves", cuisine: "Greek", price: 340 },
-//     { name: "Takoyaki", cuisine: "Japanese", price: 445 },
-//     { name: "Mongolian Beef", cuisine: "Chinese", price: 480 },
-//     { name: "Hyderabadi Haleem", cuisine: "Indian", price: 495 },
-//     { name: "Mexican Street Corn", cuisine: "Mexican", price: 360 },
-//     { name: "Steak Sandwich", cuisine: "American", price: 455 },
-//     { name: "Greek Pita Pizza", cuisine: "Greek", price: 365 },
-//     { name: "Yakisoba", cuisine: "Japanese", price: 395 },
-//     { name: "Lemon Chicken", cuisine: "Chinese", price: 345 },
-//     { name: "Rajma Chawal", cuisine: "Indian", price: 350 },
-//     { name: "Guacamole and Chips", cuisine: "Mexican", price: 310 },
-//     { name: "Grilled Cheese", cuisine: "American", price: 300 },
-//     { name: "Greek Rice Bowl", cuisine: "Greek", price: 370 },
-//     { name: "Shabu Shabu", cuisine: "Japanese", price: 500 },
-//     { name: "Wonton Soup", cuisine: "Chinese", price: 335 },
-//     { name: "Kadhi Pakora", cuisine: "Indian", price: 340 },
-//     { name: "Chicken Mole", cuisine: "Mexican", price: 460 },
-//     { name: "Sloppy Joe", cuisine: "American", price: 375 },
-//     { name: "Greek Chicken Skewers", cuisine: "Greek", price: 420 },
-//     { name: "Tonkatsu", cuisine: "Japanese", price: 455 },
-//     { name: "Chicken Lollipop", cuisine: "Chinese", price: 390 },
-//     { name: "Pani Puri", cuisine: "Indian", price: 310 },
-//     { name: "Mexican Rice Bowl", cuisine: "Mexican", price: 390 },
-//     { name: "Pulled Pork Burger", cuisine: "American", price: 460 },
-//     { name: "Feta Pasta", cuisine: "Greek", price: 385 },
-//     { name: "Japanese Curry Rice", cuisine: "Japanese", price: 420 },
-//     { name: "Chilli Garlic Noodles", cuisine: "Chinese", price: 370 },
-//     { name: "Tandoori Chicken", cuisine: "Indian", price: 465 },
-//     { name: "Carne Asada", cuisine: "Mexican", price: 450 },
-//     { name: "Cobb Salad", cuisine: "American", price: 375 },
-//     { name: "Greek Meatballs", cuisine: "Greek", price: 390 },
-//     { name: "Matcha Cheesecake", cuisine: "Japanese", price: 385 },
-//     { name: "Mapo Tofu", cuisine: "Chinese", price: 430 },
-//     { name: "Chicken Korma", cuisine: "Indian", price: 410 },
-//     { name: "Huevos Rancheros", cuisine: "Mexican", price: 345 },
-//     { name: "Pancakes Stack", cuisine: "American", price: 315 },
-//     { name: "Greek Veg Wrap", cuisine: "Greek", price: 325 },
-//     { name: "Mochi Ice Cream", cuisine: "Japanese", price: 320 },
-//     { name: "Kung Pao Paneer", cuisine: "Chinese", price: 365 },
-//     { name: "Veg Kofta Curry", cuisine: "Indian", price: 370 },
-//     { name: "Shrimp Ceviche", cuisine: "Mexican", price: 495 },
-//     { name: "Classic BLT Sandwich", cuisine: "American", price: 335 },
-//     { name: "Grilled Halloumi", cuisine: "Greek", price: 450 },
-//     { name: "Tuna Sushi Roll", cuisine: "Japanese", price: 480 },
-//   ];
-
-//   function handleopencart(item) {
-//     const existing = opencart.find((i) => i.name === item.name);
-//     if (existing) {
-//       setopencart(
-//         opencart.map((i) =>
-//           i.name === item.name ? { ...i, quantity: i.quantity + 1 } : i
-//         )
-//       );
-//     } else {
-//       setopencart([...opencart, { ...item, quantity: 1 }]);
-//     }
-//     setcartno(cartno + 1);
-//   }
-
-//   function increaseQty(name) {
-//     setopencart(
-//       opencart.map((i) =>
-//         i.name === name ? { ...i, quantity: i.quantity + 1 } : i
-//       )
-//     );
-//     setcartno(cartno + 1);
-//   }
-
-//   function decreaseQty(name) {
-//     setopencart(
-//       opencart
-//         .map((i) =>
-//           i.name === name ? { ...i, quantity: i.quantity - 1 } : i
-//         )
-//         .filter((i) => i.quantity > 0)
-//     );
-//     setcartno(cartno - 1);
-//   }
-
-//   return (
-//     <div>
-//       <div className="cartdiv">
-//         <div className="cart">
-//           <img
-//             className="cartimage"
-//             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_H7uzaQjBVh27ubieyx0xNG89B3amksS7g&s"
-//           />
-//           <p className="carttext">Cart</p>
-//           <span className="cartno">{cartno}</span>
-//         </div>
-//       </div>
-//       <div className="menuCard-container">
-//         {foodItems.map((data, id) => {
-//           const cartItem = opencart.find((i) => i.name === data.name);
-//           return (
-//             <div className="menuCard" key={id}>
-//               <div className="menu_image">
-//                 <img className="image_card" src="https://via.placeholder.com/150" />
-//               </div>
-//               <div className="menudetails">
-//                 <p className="food_name">Dish: {data.name}</p>
-//                 <p className="fooddetail">Cuisine: {data.cuisine}</p>
-//                 <p className="fooddetail">Price: ₹{data.price}</p>
-//                 {cartItem ? (
-//                   <div className="qty-controls">
-//                     <button onClick={() => decreaseQty(data.name)}>-</button>
-//                     <span>{cartItem.quantity}</span>
-//                     <button onClick={() => increaseQty(data.name)}>+</button>
-//                   </div>
-//                 ) : (
-//                   <button className="add" onClick={() => handleopencart(data)}>
-//                     + Add
-//                   </button>
-//                 )}
-//               </div>
-//             </div>
-//           );
-//         })}
-//       </div>
-//       <div>
-//         {opencart.length > 0 && (
-//           <div className="cartitems">
-//             <div className="cartdetails">
-//               <h2>Cart Items</h2>
-//               {opencart.map((data, id) => (
-//                 <div key={id}>
-//                   <p>{data.name}</p>
-//                   <p>
-//                     ₹{data.price} × {data.quantity} = ₹{data.price * data.quantity}
-//                   </p>
-//                 </div>
-//               ))}
-//             </div>
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
