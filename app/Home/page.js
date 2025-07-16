@@ -8,9 +8,17 @@ export default function Home(){
   // const [data,setdata]=useState([])
   // //Handle search when ever we searches anything on the search bar of the home page so now write useSate foe it
   const [search,setsearch]=useState("")
+  const [count,setcount]=useState(0)
 
   function handlesearch(event){
     setsearch(event.target.value)
+  }
+  function handleorder(){
+    window.location.href="./OrderNow"
+  }
+
+  function handlecart(){
+
   }
 
   const data=[
@@ -177,8 +185,7 @@ export default function Home(){
             src="https://cdn-icons-png.flaticon.com/512/622/622669.png"  alt="search"/>
             <input className="searchbar" type="text" placeholder="Search for restaurent cusine or dish" value={search} onChange={handlesearch}/>
           </div>
-          <button className="login_nav" onClick={handleLoginHome}>Login</button>
-          <button className="signup_nav" onClick={handlesignupHome}>Sign Up</button>
+
 
         </div>
         {filtererd_restaurent.length>0?        
@@ -207,7 +214,7 @@ export default function Home(){
                 <p className="detail">Cusine: {restaurent.cuisine}</p>
                 <p className="detail">{restaurent.address}</p>
                 {/* <p className="detail">Phn No: 7893873124</p> */}
-                <button className="order" onClick={handleorder}>Order Now</button>
+                <button className="order" onClick={handleorder}>View Menu</button>
 
               </div>
             </div>
