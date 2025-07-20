@@ -17,7 +17,7 @@ export default function Login(){
         setError('')
         try {
         await signInWithGoogle();
-        router.push('/Home')
+        router.push('/')
         } catch(err) {
             setError(err)
         }
@@ -34,7 +34,7 @@ export default function Login(){
     function handlelogin(){
         const email=username.trim()
         if (email=="user@gmail.com" && password=="12345"){
-            window.location.href="./Home"
+            window.location.href="./"
         }else{
             setinvalid("Invaild credential. Please try again")
         }
