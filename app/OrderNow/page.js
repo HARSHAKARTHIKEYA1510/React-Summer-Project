@@ -170,7 +170,7 @@ export default function(){
             {foodItems.map((data,id)=>{
                 const quantity = handlequantity(data);
             return( 
-                <div className="menuCard">
+                <div className="menuCard" key={id}>
                     <div className="menu_image">{data.cuisine=="Italian"?<img className="image_card" src="https://d2lswn7b0fl4u2.cloudfront.net/photos/pg-italian-dishes-1645372086.jpg"/>
                         :data.cuisine=="Chinese"? <img className="image_card" src="https://media.istockphoto.com/id/545286388/photo/chinese-food-blank-background.jpg?s=612x612&w=0&k=20&c=pqOIy07YKO5PlU5VxjscwTGRrrZ8PluKMUjSOz-II60="/>
                         :data.cuisine=="Japanese"?<img className="image_card" src="https://media.istockphoto.com/id/688006056/photo/japanese-cuisine.jpg?s=612x612&w=0&k=20&c=MOHSpXQ9EFfprrdMaOv9bPn3W9yS10hnhJs791wL6Rc="/>
