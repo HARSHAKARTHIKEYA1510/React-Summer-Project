@@ -47,6 +47,9 @@
   transform: scale(1.02);
   
 }
+.noresults{
+  text-align: center;
+}
 .login_nav{
   margin-left: 330px;
   height: 36px;
