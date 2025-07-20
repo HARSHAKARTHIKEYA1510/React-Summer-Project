@@ -2,6 +2,7 @@
 
 import {useState,useEffect} from "react"
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Home(){
 
@@ -9,12 +10,17 @@ export default function Home(){
   // //Handle search when ever we searches anything on the search bar of the home page so now write useSate foe it
   const [search,setsearch]=useState("")
   const [count,setcount]=useState(0)
+  const router = useRouter();
 
   function handlesearch(event){
     setsearch(event.target.value)
   }
   function handleorder(){
-    window.location.href="./OrderNow"
+    router.push("/OrderNow")
+  }
+
+  async function handleSignin() {
+
   }
 
   function handlecart(){
@@ -184,9 +190,8 @@ export default function Home(){
             <img className="searchimg"
             src="https://cdn-icons-png.flaticon.com/512/622/622669.png"  alt="search"/>
             <input className="searchbar" type="text" placeholder="Search for restaurent cusine or dish" value={search} onChange={handlesearch}/>
-          </div>
-
-
+          </div> 
+          <button onClick={() => router.push("/Login")} className="signin">Signin</button>
         </div>
         {filtererd_restaurent.length>0?        
         <div className="restaurent-container">

@@ -1,14 +1,27 @@
 "use client";  // <-- Add this line at the top of the file
 
 import {useState} from "react"
-
 import Link from "next/link";
+import { signInWithGoogle } from "../../lib/auth";
+import { useRouter } from "next/navigation";
 
 
 export default function Login(){
     const [username,setUsername]=useState("")
     const [password,setpassword]=useState("")
     const [invaild,setinvalid]=useState("")
+    const [error, setError] = useState(null);
+    const router = useRouter();
+
+    async function handleGoogle() {
+        setError('')
+        try {
+        await signInWithGoogle();
+        router.push('/Home')
+        } catch(err) {
+            setError(err)
+        }
+    }
 
 
     function handleusername(event){
@@ -41,6 +54,10 @@ export default function Login(){
                 <p className="remember">Remember Me<input id="text" type="checkbox"/></p>
                 
                 <button className="signinbutton1" onClick={handlelogin}>signin</button>
+                <div className="googlediv">
+                <img className="googleimg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/480px-Google_%22G%22_logo.svg.png"/>
+                <span onClick={handleGoogle} className="google">Continue with google</span>
+                </div>
                 {invaild && <p style={{color:"red",marginTop:"10px"}}>{invaild}</p>}
                 <p className={invaild?"newbites1":"newbites"} >New to NearByBites? 
                     <Link className="signupbutton" href="signup">sign Up</Link>
