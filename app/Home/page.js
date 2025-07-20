@@ -156,7 +156,7 @@ export default function Home(){
      
     res.restaurant_name.toLowerCase().includes(search) ||
     res.cuisine.toLowerCase().includes(search) 
-    // res.rating.toString().includes(search) 
+
 
   ))
    
@@ -182,70 +182,80 @@ export default function Home(){
   //   getdata()
   // },[])
 
-    return (
-      <div>
-        <div className="navbar">
-          <h2 className="nearbybites">NearBy</h2><img className="image_home" src="https://media.istockphoto.com/id/1443629939/vector/beef-burger-vintage-colorful-emblem.jpg?s=612x612&w=0&k=20&c=eaMP3XhGUUsjsfORzlZt7gftXpJMrHGuYRF7Wl4FdHs="/>
-          <div className="searchdiv">
-            <img className="searchimg"
-            src="https://cdn-icons-png.flaticon.com/512/622/622669.png"  alt="search"/>
-            <input className="searchbar" type="text" placeholder="Search for restaurent cusine or dish" value={search} onChange={handlesearch}/>
-          </div> 
-          <button onClick={() => router.push("/Login")} className="signin">Signin</button>
+  return (
+    <div>
+      <div className="navbar">
+        <h2 className="nearbybites">NearBy</h2>
+        <img
+          className="image_home"
+          src="https://media.istockphoto.com/id/1443629939/vector/beef-burger-vintage-colorful-emblem.jpg?s=612x612&w=0&k=20&c=eaMP3XhGUUsjsfORzlZt7gftXpJMrHGuYRF7Wl4FdHs="
+        />
+        <div className="searchdiv">
+          <img
+            className="searchimg"
+            src="https://cdn-icons-png.flaticon.com/512/622/622669.png"
+            alt="search"
+          />
+          <input
+            className="searchbar"
+            type="text"
+            placeholder="Search for restaurent cusine or dish"
+            value={search}
+            onChange={handlesearch}
+          />
         </div>
-        {filtererd_restaurent.length>0?        
+        <button onClick={() => router.push("/Login")} className="signin">Signin</button>
+      </div>
+  
+      {search && filtererd_restaurent.length === 0 ? (
+        <div className="not-found">
+          <h2>No matching restaurants found.</h2>
+        </div>
+      ) : (
         <div className="restaurent-container">
-          {filtererd_restaurent.map((restaurent,id)=>(
-            
+          {(search ? filtererd_restaurent : data).map((restaurent, id) => (
             <div className="restaurent-card" key={id}>
-              
               <div className="restaurent-datails">
-              <div className="image_div">{restaurent.cuisine=="Italian"?<img className="image_card" src="https://d2lswn7b0fl4u2.cloudfront.net/photos/pg-italian-dishes-1645372086.jpg"/>
-              :restaurent.cuisine=="Chinese"? <img className="image_card" src="https://media.istockphoto.com/id/545286388/photo/chinese-food-blank-background.jpg?s=612x612&w=0&k=20&c=pqOIy07YKO5PlU5VxjscwTGRrrZ8PluKMUjSOz-II60="/>
-              :restaurent.cuisine=="Japanese"?<img className="image_card" src="https://media.istockphoto.com/id/688006056/photo/japanese-cuisine.jpg?s=612x612&w=0&k=20&c=MOHSpXQ9EFfprrdMaOv9bPn3W9yS10hnhJs791wL6Rc="/>
-              :restaurent.cuisine=="American"?<img className="image_card" src="https://www.shutterstock.com/image-photo/american-style-brunch-tomato-omelette-600nw-2424020343.jpg"/>
-              :restaurent.cuisine=="Indian"?<img className="image_card" src="https://media.istockphoto.com/id/1168659055/photo/various-indian-dishes-featuring-rogan-josh-chicken-tikka-masala-biryani-tandoori-chicken.jpg?s=612x612&w=0&k=20&c=UQHwCReZcVv4gYf7JOz0unQbDKkvmIHf4cjih-EkSLY="/>
-              :restaurent.cuisine=="Mexican"?<img className="image_card" src="https://www.englishclub.com/images/vocabulary/food/mexican/mexican-food.jpg"/>
-              :restaurent.cuisine=="French"?<img className="image_card" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/4f/dc/1f/our-beautiful-french.jpg?w=900&h=500&s=1"/>
-              :restaurent.cuisine=="Greek"?<img className="image_card" src="https://plus.unsplash.com/premium_photo-1674106347866-8282d8c19f84?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z3JlZWslMjBmb29kfGVufDB8fDB8fHww"/>
-              :restaurent.cuisine=="Middle Eastern"?<img className="image_card" src="https://media.istockphoto.com/id/833390070/photo/arabic-dishes-and-meze.jpg?s=612x612&w=0&k=20&c=MtWWS3THa19Mnb96iOGfpxOGwdmYNM-Xi0_zAEW9mTY="/>
-              :restaurent.cuisine=="Vegan"||"Healthy"?<img className="image_card" src="https://cdn.tatlerasia.com/asiatatler/i/ph/2021/04/07174644-ella-olsson-2ixtgsgfi-s-unsplash_cover_1920x1440.jpg"/>:""}
-              </div>
-              <div className="name-rating">
-                <p className="detail" style={{marginTop:"0px"}}>{restaurent.restaurant_name} </p>
-                <p id="rating" className="detail"> {restaurent.rating}<img className="star" src="https://static.vecteezy.com/system/resources/thumbnails/021/508/056/small_2x/white-star-shotting-star-transparent-bokeh-stars-free-free-png.png"/>
-               </p>
-               </div>
+                <div className="image_div">
+                  {restaurent.cuisine == "Italian" ? (
+                    <img className="image_card" src="https://d2lswn7b0fl4u2.cloudfront.net/photos/pg-italian-dishes-1645372086.jpg" />
+                  ) : restaurent.cuisine == "Chinese" ? (
+                    <img className="image_card" src="https://media.istockphoto.com/id/545286388/photo/chinese-food-blank-background.jpg?s=612x612&w=0&k=20&c=pqOIy07YKO5PlU5VxjscwTGRrrZ8PluKMUjSOz-II60=" />
+                  ) : restaurent.cuisine == "Japanese" ? (
+                    <img className="image_card" src="https://media.istockphoto.com/id/688006056/photo/japanese-cuisine.jpg?s=612x612&w=0&k=20&c=MOHSpXQ9EFfprrdMaOv9bPn3W9yS10hnhJs791wL6Rc=" />
+                  ) : restaurent.cuisine == "American" ? (
+                    <img className="image_card" src="https://www.shutterstock.com/image-photo/american-style-brunch-tomato-omelette-600nw-2424020343.jpg" />
+                  ) : restaurent.cuisine == "Indian" ? (
+                    <img className="image_card" src="https://media.istockphoto.com/id/1168659055/photo/various-indian-dishes-featuring-rogan-josh-chicken-tikka-masala-biryani-tandoori-chicken.jpg?s=612x612&w=0&k=20&c=UQHwCReZcVv4gYf7JOz0unQbDKkvmIHf4cjih-EkSLY=" />
+                  ) : restaurent.cuisine == "Mexican" ? (
+                    <img className="image_card" src="https://www.englishclub.com/images/vocabulary/food/mexican/mexican-food.jpg" />
+                  ) : restaurent.cuisine == "French" ? (
+                    <img className="image_card" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/4f/dc/1f/our-beautiful-french.jpg?w=900&h=500&s=1" />
+                  ) : restaurent.cuisine == "Greek" ? (
+                    <img className="image_card" src="https://plus.unsplash.com/premium_photo-1674106347866-8282d8c19f84?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z3JlZWslMjBmb29kfGVufDB8fDB8fHww" />
+                  ) : restaurent.cuisine == "Middle Eastern" ? (
+                    <img className="image_card" src="https://media.istockphoto.com/id/833390070/photo/arabic-dishes-and-meze.jpg?s=612x612&w=0&k=20&c=MtWWS3THa19Mnb96iOGfpxOGwdmYNM-Xi0_zAEW9mTY=" />
+                  ) : (restaurent.cuisine == "Vegan" || restaurent.cuisine == "Healthy") ? (
+                    <img className="image_card" src="https://cdn.tatlerasia.com/asiatatler/i/ph/2021/04/07174644-ella-olsson-2ixtgsgfi-s-unsplash_cover_1920x1440.jpg" />
+                  ) : (
+                    <img className="image_card" src="https://media.istockphoto.com/id/1168659055/photo/various-indian-dishes-featuring-rogan-josh-chicken-tikka-masala-biryani-tandoori-chicken.jpg?s=612x612&w=0&k=20&c=UQHwCReZcVv4gYf7JOz0unQbDKkvmIHf4cjih-EkSLY=" />
+                  )}
+                </div>
+                <div className="name-rating">
+                  <p className="detail" >{restaurent.restaurant_name}</p>
+                  <p id="rating" className="detail">
+                    {restaurent.rating}
+                    <img className="star" src="https://static.vecteezy.com/system/resources/thumbnails/021/508/056/small_2x/white-star-shotting-star-transparent-bokeh-stars-free-free-png.png" />
+                  </p>
+                </div>
                 <p className="detail">Cusine: {restaurent.cuisine}</p>
                 <p className="detail">{restaurent.address}</p>
-                {/* <p className="detail">Phn No: 7893873124</p> */}
                 <button className="order" onClick={handleorder}>View Menu</button>
-
               </div>
             </div>
           ))}
-
-          </div>:
-          <div className="restaurent-container">
-          {data.map((restaurent,id)=>(
-            
-            <div className="restaurent-card" key={restaurent.id}>
-              const type={restaurent.cuisine}
-              <div className="image_div">{type=="Italian"?<img className="image_card" src="https://d2lswn7b0fl4u2.cloudfront.net/photos/pg-italian-dishes-1645372086.jpg"/>:type=="Chinese"? <img className="image_card" src="https://www.shutterstock.com/image-photo/big-assortment-delicious-foods-top-260nw-2469682877.jpg"/>:type=="Japanese"?<img className="image_card" src="https://media.istockphoto.com/id/688006056/photo/japanese-cuisine.jpg?s=612x612&w=0&k=20&c=MOHSpXQ9EFfprrdMaOv9bPn3W9yS10hnhJs791wL6Rc="/>:type=="American"?<img className="image_card" src="https://www.shutterstock.com/image-photo/american-style-brunch-tomato-omelette-600nw-2424020343.jpg"/>:""}
-              </div>
-              <div className="restaurent-datails">
-                <p className="name">Restaurent: {restaurent.restaurant_name}</p>
-                <p className="cuisine">Cusine: {restaurent.cuisine}</p>
-                <p className="rating">Rating: {restaurent.rating}<img className="star" src="https://static.vecteezy.com/system/resources/thumbnails/021/508/056/small_2x/white-star-shotting-star-transparent-bokeh-stars-free-free-png.png"/>
-                </p>
-
-              </div>
-            </div>
-          ))}
-          </div>}
-          <img className="star" src="https://static.vecteezy.com/system/resources/thumbnails/021/508/056/small_2x/white-star-shotting-star-transparent-bokeh-stars-free-free-png.png"/>
-          </div>
-
-
-      )
+        </div>
+      )}
+    </div>
+  );
 }
