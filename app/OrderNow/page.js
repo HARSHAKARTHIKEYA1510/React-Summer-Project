@@ -180,11 +180,11 @@ export default function(){
         localStorage.removeItem("cart")
       }else{
         localStorage.setItem("cart",JSON.stringify(cartitems))
-      }
-      setcartitems(cartitems)
-
-      const totalitems=cartitems.reduce((curr,data)=>curr+data.quantity,0)
+        const totalitems=cartitems.reduce((curr,data)=>curr+data.quantity,0)
       setcartno(totalitems)
+      }
+
+      
     },[cartitems])
     
 
