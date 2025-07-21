@@ -167,7 +167,8 @@ export default function(){
       if (storeddata){
         const parseddata=JSON.parse(storeddata)
         setcartitems(parseddata)
-        totalitems=parseddata.reduce((curr,item)=>curr+item.quantity,0)
+        const totalitems=parseddata.reduce((curr,item)=>curr+item.quantity,0)
+        setcartitems(totalitems)
       }else{
         setcartitems([])
         setcartno(0)
