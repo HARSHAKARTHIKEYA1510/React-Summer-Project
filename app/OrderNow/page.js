@@ -179,17 +179,13 @@ export default function(){
       const totalitems=cartitems.reduce((curr,data)=>curr+data.quantity,0)
       if (totalitems===0){
         localStorage.removeItem("cart")
-        setcartitems([])
         setcartno(0)
-        
       }else{
         localStorage.setItem("cart",JSON.stringify(cartitems))
-        
-      setcartno(totalitems)
       }
 
       
-    },[cartitems])
+    },[cartitems,cartno])
     
 
     return (
