@@ -13,6 +13,8 @@ export default function(){
     const [cartno,setcartno]=useState(0)
     const [cartitems,setcartitems]=useState([])
     const [showCart, setShowCart] = useState(false);
+    const [hasMounted, setHasMounted] = useState(false);
+
 
     const foodItems = [
         { name: "Sushi Platter", cuisine: "Japanese", price: 475 },
@@ -149,15 +151,42 @@ export default function(){
         }
       }
     
-      function handlequantity(item){
-        const cartitem=cartitems.find((cartitem)=>cartitem.name==item.name)
-        return cartitem?cartitem.quantity:0
-      }
+      function handlequantity(item) {
+        if (!cartitems || cartitems.length === 0) return 0;
+      
+        const cartitem = cartitems.find((cartitem) => cartitem.name === item.name);
+        return cartitem ? cartitem.quantity : 0;
+      }      
 
       function handletogglecart() {
         setShowCart(!showCart)
     }
     
+    useEffect(()=>{
+      const storeddata=localStorage.getItem("cart")
+      if (storeddata){
+        const parseddata=JSON.parse(storeddata)
+        setcartitems(parseddata)
+        totalitems=parseddata.reduce((curr,item)=>curr+item.quantity,0)
+      }else{
+        setcartitems([])
+        setcartno(0)
+      }
+    },[])
+
+    useEffect(()=>{
+      if (cartitems.length==0){
+        localStorage.removeItem("cart")
+      }else{
+        localStorage.setItem("cart",JSON.stringify(cartitems))
+      }
+      setcartitems(cartitems)
+
+      const totalitems=cartitems.reduce((curr,data)=>curr+data.quantity,0)
+      setcartno(totalitems)
+    },[cartitems])
+    
+
     return (
         <div>
             <div className="cart" onClick={() => setShowCart(!showCart)}>
