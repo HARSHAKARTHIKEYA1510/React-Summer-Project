@@ -176,11 +176,15 @@ export default function(){
     },[])
 
     useEffect(()=>{
-      if (cartitems.length==0){
+      const totalitems=cartitems.reduce((curr,data)=>curr+data.quantity,0)
+      if (totalitems===0){
         localStorage.removeItem("cart")
+        setcartitems([])
+        setcartno(0)
+        
       }else{
         localStorage.setItem("cart",JSON.stringify(cartitems))
-        const totalitems=cartitems.reduce((curr,data)=>curr+data.quantity,0)
+        
       setcartno(totalitems)
       }
 
