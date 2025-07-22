@@ -13,7 +13,8 @@ export default function(){
     const [cartno,setcartno]=useState(0)
     const [cartitems,setcartitems]=useState([])
     const [showCart, setShowCart] = useState(false);
-    const [hasMounted, setHasMounted] = useState(false);
+    const [orderPlaced, setOrderPlaced] = useState(false);
+
 
 
     const foodItems = [
@@ -161,6 +162,13 @@ export default function(){
       function handletogglecart() {
         setShowCart(!showCart)
     }
+
+    function handleCheckout() {
+      setOrderPlaced(true);                   
+      setcartitems([]);                         
+      setcartno(0);                             
+      localStorage.removeItem("cart");          
+    }
     
     useEffect(()=>{
       const storeddata=localStorage.getItem("cart")
@@ -254,17 +262,57 @@ export default function(){
           <p className="cart-total">
             Total: ₹{cartitems.reduce((total, item) => total + item.price * item.quantity, 0)}
           </p>
-          <p className="checkout">check Out</p>
+          <p className="checkout" onClick={handleCheckout}>check Out</p>
         </>
       )}
+      {/* {!orderPlaced ? (
+//   <p className="checkout" onClick={handleCheckout}>Check Out</p>
+// ) : (
+//   <p className="order-confirmation">Your order has been placed successfully!</p>
+// )} */}
+
     </div>
   </div>
 )}
 
-
-
+      {/* {orderPlaced && (
+        <div className="order-confirmation">
+          <p>Your order has been placed successfully!</p>
         </div>
+      )} */}
         </div>
+        <footer className="app-footer">
+        <div className="footer-content">
+          <div className="footer-logo">
+            <h2 className="logo">NearByBites</h2>
+          </div>
+          <div className="footer-links">
+            <div className="footer-column">
+              <h3 className="footer-heading">Company</h3>
+              <a href="#" className="footer-link">About Us</a>
+              <a href="#" className="footer-link">Careers</a>
+              <a href="#" className="footer-link">Contact</a>
+            </div>
+            <div className="footer-column">
+              <h3 className="footer-heading">Resources</h3>
+              <a href="#" className="footer-link">Blog</a>
+              <a href="#" className="footer-link">Guides</a>
+              <a href="#" className="footer-link">FAQ</a>
+            </div>
+            <div className="footer-column">
+              <h3 className="footer-heading">Legal</h3>
+              <a href="#" className="footer-link">Privacy</a>
+              <a href="#" className="footer-link">Terms</a>
+              <a href="#" className="footer-link">Security</a>
+            </div>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>© 2025 NearByBites. All rights reserved.</p>
+        </div>
+      </footer>
+        </div>
+        
     )
 }
 

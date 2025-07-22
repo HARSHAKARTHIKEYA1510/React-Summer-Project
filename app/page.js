@@ -158,7 +158,8 @@ export default function Home() {
     const searchTerm = search.toLowerCase();
     return (
       res.restaurant_name.toLowerCase().includes(searchTerm) ||
-      res.cuisine.toLowerCase().includes(searchTerm)
+      res.cuisine.toLowerCase().includes(searchTerm)||
+      String(res.rating).includes(searchTerm)
     );
   });
 
@@ -269,6 +270,36 @@ export default function Home() {
           ))}
         </div>
       )}
+      <footer className="app-footer">
+        <div className="footer-content">
+          <div className="footer-logo">
+            <h2 className="logo">NearByBites</h2>
+          </div>
+          <div className="footer-links">
+            <div className="footer-column">
+              <h3 className="footer-heading">Company</h3>
+              <a href="#" className="footer-link">About Us</a>
+              <a href="#" className="footer-link">Careers</a>
+              <a href="#" className="footer-link">Contact</a>
+            </div>
+            <div className="footer-column">
+              <h3 className="footer-heading">Resources</h3>
+              <a href="#" className="footer-link">Blog</a>
+              <a href="#" className="footer-link">Guides</a>
+              <a href="#" className="footer-link">FAQ</a>
+            </div>
+            <div className="footer-column">
+              <h3 className="footer-heading">Legal</h3>
+              <a href="#" className="footer-link">Privacy</a>
+              <a href="#" className="footer-link">Terms</a>
+              <a href="#" className="footer-link">Security</a>
+            </div>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>© 2025 NearByBites. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }
