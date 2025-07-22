@@ -155,12 +155,15 @@ export default function Home() {
   ]
   
   const filteredRestaurant = data.filter((res) => {
-    const searchTerm = search.toLowerCase();
+    const searchTerm = search.trim().toLowerCase().toString();
+  
     return (
       res.restaurant_name.toLowerCase().includes(searchTerm) ||
-      res.cuisine.toLowerCase().includes(searchTerm)
+      res.cuisine.toLowerCase().includes(searchTerm) ||
+      String(res.rating).includes(searchTerm)
     );
   });
+  
 
   function handleLoginHome() {
     router.push("/Login");
@@ -227,7 +230,6 @@ export default function Home() {
             <div className="restaurent-card" key={id}>
               <div className="restaurent-datails">
                 <div className="image_div">
-                  {/* Fixed: using more precise cuisine matching */}
                   {restaurant.cuisine.includes("Italian") ? (
                     <img className="image_card" src="https://d2lswn7b0fl4u2.cloudfront.net/photos/pg-italian-dishes-1645372086.jpg" alt="Italian cuisine" />
                   ) : restaurant.cuisine.includes("Chinese") ? (
@@ -266,9 +268,14 @@ export default function Home() {
                 <button className="order" onClick={handleOrder}>View Menu</button>
               </div>
             </div>
+
           ))}
         </div>
+        
       )}
+      
     </div>
+    
+
   );
 }
