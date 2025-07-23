@@ -725,12 +725,14 @@ font-size: 0.85rem;
   width: 100%; 
   margin-left: 0;
   justify-content: center;
+  border-radius: 5.25rem;
   gap: 20px;
 }
 
 .searchbar {
   width: 300px; 
   padding: 18px;
+  border-radius: 0.25rem;
 }
 
 .login_nav, .signup_nav {
@@ -809,6 +811,7 @@ font-size: 0.85rem;
   padding: 15px;
   font-size: 14px;
   text-align: center;
+
 }
 
 .searchimg {
