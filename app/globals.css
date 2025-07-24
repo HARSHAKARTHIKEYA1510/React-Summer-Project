@@ -1,4 +1,3 @@
-
 .nearbybites{
   margin-left: 270px;
   color: #55883B;
@@ -38,9 +37,10 @@
   border: 1px solid white;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 6px;
   transition:  0.8s ease-in-out;
+  border-radius: 10px;
 }
 .searchdiv:hover{
-  border: 1px solid #55883B;
+  /* border: 1px solid #55883B; */
   transform: scale(1.02);
 }
 .noresults{
@@ -811,6 +811,7 @@ font-size: 0.85rem;
   padding: 15px;
   font-size: 14px;
   text-align: center;
+
 
 }
 
